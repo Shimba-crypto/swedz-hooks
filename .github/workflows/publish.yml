@@ -1,0 +1,24 @@
+# .github/workflows/workflow.yml
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'  # triggers on tags like v0.1.0
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # required for trusted publisher
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install build
+        run: pip install build
+      - name: Build package
+        run: python -m build
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
