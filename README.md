@@ -31,7 +31,7 @@ and the Windows API (`ctypes`).
 ## Installation
 
 ```bash
-# From PyPI (once published)
+# From PyPI
 pip install swedz-hooks
 
 # From source
